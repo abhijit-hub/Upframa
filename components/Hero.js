@@ -73,15 +73,24 @@ export default function Hero() {
 
       {/* Main headline */}
       <h1
-        className="font-bebas leading-[0.92] tracking-tight max-w-[60%]"
+        className="font-bebas tracking-tight max-w-[60%]"
         style={{
           fontSize: 'clamp(68px, 10.5vw, 148px)',
+          lineHeight: '0.92',
           animation: 'fadeUp 1s 0.35s both',
         }}
       >
-        We Shape
-        <em className="font-playfair not-italic italic text-accent block">Futures</em>
-        Through Design
+        <span className="block" style={{ lineHeight: '0.92' }}>We Shape</span>
+        <span
+          className="block text-accent"
+          style={{
+            fontFamily: 'var(--font-playfair)',
+            fontStyle: 'italic',
+            fontWeight: 400,
+            lineHeight: '0.92',
+          }}
+        >Futures</span>
+        <span className="block" style={{ lineHeight: '0.92' }}>Through Design</span>
       </h1>
 
       {/* Bottom row */}

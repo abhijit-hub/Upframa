@@ -47,7 +47,7 @@ export default function About() {
           <h2 className="font-playfair font-bold leading-[1.1] mb-8 text-black"
             style={{ fontSize: 'clamp(34px, 3.5vw, 54px)' }}>
             Design with<br />
-            <em className="italic text-accent">purpose.</em><br />
+            <span style={{ fontStyle: 'italic', color: '#c8432a' }}>purpose.</span><br />
             Code with<br />precision.
           </h2>
         </RevealWrapper>

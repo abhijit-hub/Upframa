@@ -5,24 +5,35 @@ const bebas = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-bebas',
+  display: 'swap',
+  // If Google Fonts fails (no internet on first run), this fallback kicks in.
+  // Run `npm run dev` once with internet to cache the fonts locally in .next/cache.
+  fallback: ['Impact', 'Arial Narrow', 'Arial Black', 'sans-serif'],
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
   style: ['normal', 'italic'],
+  display: 'swap',
+  weight: ['400', '700'],
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
 })
 
 const dmMono = DM_Mono({
   weight: ['300', '400'],
   subsets: ['latin'],
   variable: '--font-dmmono',
+  display: 'swap',
+  fallback: ['Courier New', 'monospace'],
 })
 
 const dmSans = DM_Sans({
   weight: ['300', '400', '500'],
   subsets: ['latin'],
   variable: '--font-dmsans',
+  display: 'swap',
+  fallback: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
 })
 
 export const metadata = {
