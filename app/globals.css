@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom cursor ─────────────────────────────── */
+body { cursor: none; }
+
+.cursor {
+  width: 12px; height: 12px;
+  background: #c8432a;
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(200,67,42,0.5);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  transition: all 0.25s ease;
+  mix-blend-mode: difference;
+}
+
+/* ─── Nav 3-D glass pill ───────────────────────── */
+.nav-pill {
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 60px;
+  padding: 10px 10px 10px 28px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.5),
+    0 2px 8px  rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  transition: box-shadow .4s, transform .4s, background .4s, border-color .4s;
+  position: relative;
+}
+.nav-pill::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: 60px;
+  background: linear-gradient(135deg, rgba(255,255,255,.06) 0%, transparent 50%, rgba(0,0,0,.1) 100%);
+  pointer-events: none;
+}
+.nav-pill.scrolled {
+  background: rgba(8,8,8,.88);
+  border-color: rgba(255,255,255,.12);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.7),
+    0 4px 16px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+/* ─── Logo 3-D text shadow ─────────────────────── */
+.logo-3d {
+  text-shadow:
+    1px 1px 0 rgba(200,67,42,.4),
+    2px 2px 0 rgba(200,67,42,.2),
+    3px 3px 0 rgba(200,67,42,.1);
+  transition: text-shadow .3s, letter-spacing .3s;
+}
+.logo-3d:hover {
+  letter-spacing: 0.22em;
+  text-shadow:
+    1px 1px 0 rgba(200,67,42,.7),
+    2px 2px 0 rgba(200,67,42,.4),
+    3px 3px 0 rgba(200,67,42,.2),
+    4px 4px 0 rgba(200,67,42,.1);
+}
+
+/* ─── Hero ghost BG text drift ─────────────────── */
+.hero-ghost {
+  animation: driftBg 22s ease-in-out infinite alternate;
+}
+@keyframes driftBg {
+  from { transform: translate(-52%, -50%); }
+  to   { transform: translate(-48%, -50%); }
+}
+
+/* ─── Scroll indicator pulse ───────────────────── */
+.scroll-line {
+  width: 1px; height: 55px;
+  background: linear-gradient(to bottom, #c8432a, transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: .3; }
+  50%      { opacity: 1; }
+}
+
+/* ─── Marquee ───────────────────────────────────── */
+.marquee-track { animation: marquee 18s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── Work wall auto-scroll ─────────────────────── */
+.wall-row-1 { animation: wallLeft  30s linear infinite; }
+.wall-row-2 { animation: wallRight 36s linear infinite; }
+.wall-row-1:hover,
+.wall-row-2:hover { animation-play-state: paused; }
+@keyframes wallLeft  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+@keyframes wallRight { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+
+/* ─── Scroll-reveal ────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity  .8s cubic-bezier(.25,.46,.45,.94),
+    transform .8s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── Project card hover ───────────────────────── */
+.project-card .card-bg   { transition: transform .8s cubic-bezier(.25,.46,.45,.94); }
+.project-card:hover .card-bg  { transform: scale(1.06); }
+.project-card .card-info { transform: translateY(16px); transition: transform .5s cubic-bezier(.25,.46,.45,.94); }
+.project-card:hover .card-info { transform: translateY(0); }
+.project-card .card-meta { opacity: 0; transition: opacity .4s .1s; }
+.project-card:hover .card-meta { opacity: 1; }
+
+/* ─── CTA button sweep ──────────────────────────── */
+.cta-btn {
+  position: relative; overflow: hidden;
+  display: inline-block;
+}
+.cta-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: #c8432a;
+  transform: translateX(-100%);
+  transition: transform .4s cubic-bezier(.77,0,.175,1);
+}
+.cta-btn:hover::before { transform: translateX(0); }
+.cta-btn span { position: relative; z-index: 1; }
+
+/* ─── Service card border reveal ────────────────── */
+.service-card { border-top: 3px solid transparent; transition: border-color .3s, background .3s; }
+.service-card:hover { border-color: #c8432a; }
+
+/* ─── Badge hover ───────────────────────────────── */
+.badge { transition: border-color .3s, background .3s; }
+.badge:hover { border-color: rgba(200,67,42,.4) !important; background: rgba(200,67,42,.05) !important; }
+
+/* ─── Process step hover ────────────────────────── */
+.process-step { transition: background .3s; }
+.process-step:hover { background: rgba(255,255,255,.02); }
+
+/* ─── Founder photos ────────────────────────────── */
+.founder-card {
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 20px;
+  border: 3px solid rgba(255,255,255,.12);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.4);
+}
+.founder-card:first-child { top: 0; right: 0; transform: rotate(4deg); z-index: 2; }
+.founder-card:last-child  { top: 20px; right: 130px; transform: rotate(-5deg); z-index: 1; }
+
+/* ─── Wall card hover ───────────────────────────── */
+.wall-card {
+  transition: transform .4s ease, box-shadow .4s ease, border-color .4s;
+}
+.wall-card:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.7);
+  border-color: rgba(200,67,42,.3) !important;
+}
+
+/* ─── Hero CTA arrow ────────────────────────────── */
+.hero-cta { transition: gap .3s; }
+.hero-cta:hover { gap: 1.75rem; }
