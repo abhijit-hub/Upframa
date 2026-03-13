@@ -25,22 +25,25 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-black px-14 py-[140px]">
+    <section id="process" className="bg-black px-6 py-20 md:px-14 md:py-[140px]">
 
       <RevealWrapper>
-        <h2 className="font-bebas leading-[0.95] tracking-tight" style={{ fontSize: 'clamp(48px,7vw,96px)' }}>
+        <h2 className="font-bebas leading-[0.95] tracking-tight mb-12 md:mb-20" style={{ fontSize: 'clamp(48px,7vw,96px)' }}>
           How We<br />
-          <em className="font-playfair italic text-accent not-italic">Work</em>
+          <span className="text-accent" style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontWeight: 700 }}>Work</span>
         </h2>
       </RevealWrapper>
 
-      <div className="mt-20 border-t border-white/[0.08]">
+      <div className="border-t border-white/[0.08]">
         {steps.map((s, i) => (
           <RevealWrapper key={s.num} delay={i * 0.1}>
-            <div className="process-step grid grid-cols-[80px_1fr_1fr] gap-12 items-start py-14 border-b border-white/[0.08]">
-              <span className="font-mono text-[13px] text-accent pt-2">{s.num}</span>
-              <h3 className="font-bebas text-[46px] tracking-[0.02em] leading-none">{s.name}</h3>
-              <p className="text-[14px] leading-[1.85] text-white/45 font-light pt-2">{s.desc}</p>
+            {/* Mobile: stacked; Desktop: 3-col grid */}
+            <div className="process-step py-10 md:py-14 border-b border-white/[0.08]
+              flex flex-col gap-3
+              md:grid md:grid-cols-[80px_1fr_1fr] md:gap-12 md:items-start">
+              <span className="font-mono text-[13px] text-accent">{s.num}</span>
+              <h3 className="font-bebas text-[36px] md:text-[46px] tracking-[0.02em] leading-none">{s.name}</h3>
+              <p className="text-[14px] leading-[1.85] text-white/45 font-light">{s.desc}</p>
             </div>
           </RevealWrapper>
         ))}

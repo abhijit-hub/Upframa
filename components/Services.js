@@ -65,40 +65,45 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#e8e3d9] text-black px-14 py-[140px]">
+    <section id="services" className="bg-[#e8e3d9] text-black px-6 py-20 md:px-14 md:py-[140px]">
 
       <RevealWrapper>
-        <div className="flex justify-between items-end mb-20">
-          <h2 className="font-bebas leading-[0.95] tracking-tight text-black" style={{ fontSize: 'clamp(48px,7vw,96px)' }}>
-            What We<br />
-            <em className="font-playfair italic text-accent not-italic">Do</em>
-          </h2>
-        </div>
+        <h2
+          className="font-bebas tracking-tight text-black mb-16 md:mb-20"
+          style={{ fontSize: 'clamp(48px,7vw,96px)', lineHeight: 0.95 }}
+        >
+          <span className="block">What We</span>
+          <span
+            className="block text-accent"
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontWeight: 700, lineHeight: 0.95 }}
+          >
+            Do
+          </span>
+        </h2>
       </RevealWrapper>
 
-      <div className="grid grid-cols-3 gap-[2px] bg-[#d0ccc4]">
+      {/* Cards — stack on mobile, 3-col on desktop */}
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:gap-[2px] md:bg-[#d0ccc4]">
         {services.map((s, i) => (
           <RevealWrapper key={s.num} delay={i * 0.1}>
-            <div
-              className="service-card relative bg-[#e8e3d9] px-11 py-14 overflow-hidden hover:bg-white"
-              data-num={s.num}
-            >
-              {/* Ghost number */}
+            <div className="service-card relative bg-[#e8e3d9] px-8 py-12 md:px-11 md:py-14 overflow-hidden hover:bg-white h-full">
+
+              {/* Ghost number — contained, won't overflow */}
               <span
                 aria-hidden
-                className="absolute -top-2.5 -right-4 font-bebas text-[110px] text-black/[0.04] leading-none pointer-events-none select-none"
+                className="absolute top-4 right-4 font-bebas text-[80px] md:text-[90px] text-black/[0.06] leading-none pointer-events-none select-none"
               >
                 {s.num}
               </span>
 
               {s.icon}
 
-              <h3 className="font-bebas text-[30px] tracking-[0.04em] text-black mt-7 mb-4">{s.name}</h3>
-              <p className="text-[14px] leading-[1.8] text-[#5a5a5a] font-light">{s.desc}</p>
+              <h3 className="font-bebas text-[26px] md:text-[30px] tracking-[0.04em] text-black mt-6 mb-3">{s.name}</h3>
+              <p className="text-[13px] md:text-[14px] leading-[1.8] text-[#5a5a5a] font-light">{s.desc}</p>
 
-              <ul className="mt-6 flex flex-col gap-2.5 list-none">
+              <ul className="mt-5 flex flex-col gap-2 list-none">
                 {s.points.map(pt => (
-                  <li key={pt} className="relative pl-4 font-mono text-[11px] tracking-[0.1em] text-[#5a5a5a]">
+                  <li key={pt} className="relative pl-5 font-mono text-[11px] tracking-[0.08em] text-[#5a5a5a]">
                     <span className="absolute left-0 text-accent">→</span>
                     {pt}
                   </li>

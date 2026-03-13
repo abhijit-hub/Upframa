@@ -1,12 +1,13 @@
+'use client'
+import { useEffect, useRef } from 'react'
 import RevealWrapper from './RevealWrapper'
 
 /*
-  TO ADD REAL PROJECT IMAGES:
-  - Add image files to /public/projects/
-  - Replace the `gradient` strings below with:
-      image: '/projects/ember.jpg'
-  - In the JSX, swap the gradient div for:
-      <Image src={project.image} alt={project.name} fill className="object-cover" />
+  TO USE REAL PROJECT IMAGES:
+  - Add images to /public/projects/  (e.g. ember.jpg, vela.jpg, aero.jpg)
+  - Import Image from 'next/image'
+  - Replace the gradient <div> with:
+      <Image src="/projects/ember.jpg" alt="Ember" fill className="object-cover" />
 */
 
 const projects = [
@@ -31,53 +32,72 @@ const projects = [
   },
 ]
 
+function ProjectCard({ project }) {
+  return (
+    <div
+      className={`project-card relative overflow-hidden bg-[#111]
+        ${project.span2 ? 'md:col-span-2 md:h-[58vh]' : 'md:h-[46vh]'}
+        h-[56vw] min-h-[220px]`}
+    >
+      {/* Gradient background */}
+      <div
+        className="card-bg absolute inset-0"
+        style={{ background: project.gradient }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,255,255,0.08)_0%,transparent_60%)]" />
+      </div>
+
+      {/* Dark overlay so text is readable */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+      {/* Text info pinned to bottom */}
+      <div className="card-info absolute bottom-0 left-0 right-0 p-6 md:p-9">
+        <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-accent mb-2">
+          {project.tag}
+        </p>
+        <h3
+          className="font-bebas tracking-[0.02em] text-white leading-none"
+          style={{ fontSize: 'clamp(24px, 3.5vw, 50px)' }}
+        >
+          {project.name}
+        </h3>
+        <p className="card-meta font-mono text-[11px] text-white/45 mt-2 tracking-[0.08em]">
+          {project.meta}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 export default function Work() {
   return (
-    <section id="work" className="px-14 py-[140px] bg-black">
+    <section id="work" className="px-6 py-20 md:px-14 md:py-[140px] bg-black">
 
+      {/* Section header */}
       <RevealWrapper>
-        <div className="flex justify-between items-end mb-20">
+        <div className="flex justify-between items-end mb-12 md:mb-20">
           <h2 className="font-bebas leading-[0.95] tracking-tight" style={{ fontSize: 'clamp(48px,7vw,96px)' }}>
             Selected<br />
-            <em className="font-playfair italic text-accent not-italic">Work</em>
+            <span
+              className="text-accent"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontWeight: 700 }}
+            >
+              Work
+            </span>
           </h2>
-          <a href="#" className="font-mono text-[11px] tracking-[0.15em] uppercase text-accent border-b border-accent pb-1 no-underline">
+          <a href="#" className="hidden md:block font-mono text-[11px] tracking-[0.15em] uppercase text-accent border-b border-accent pb-1 no-underline">
             All Projects →
           </a>
         </div>
       </RevealWrapper>
 
-      <div className="grid grid-cols-2 gap-[3px]">
-        {projects.map((p, i) => (
-          <RevealWrapper key={p.name} delay={i * 0.1}>
-            <div
-              className={`project-card relative overflow-hidden bg-[#111] cursor-none
-                ${p.span2 ? 'col-span-2 h-[58vh]' : 'h-[46vh]'}`}
-            >
-              {/* Background */}
-              <div
-                className="card-bg absolute inset-0"
-                style={{ background: p.gradient }}
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,255,255,0.08)_0%,transparent_60%)]" />
-              </div>
-
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-transparent to-transparent" />
-
-              {/* Info */}
-              <div className="card-info absolute bottom-0 left-0 right-0 p-9">
-                <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-accent mb-2.5">{p.tag}</p>
-                <h3 className="font-bebas tracking-[0.02em] text-white leading-none"
-                  style={{ fontSize: 'clamp(28px,3.5vw,50px)' }}>
-                  {p.name}
-                </h3>
-                <p className="card-meta font-mono text-[11px] text-white/45 mt-2.5 tracking-[0.08em]">{p.meta}</p>
-              </div>
-            </div>
-          </RevealWrapper>
+      {/* Cards — always visible, no reveal wrapper */}
+      <div className="flex flex-col gap-1 md:grid md:grid-cols-2 md:gap-[3px]">
+        {projects.map(p => (
+          <ProjectCard key={p.name} project={p} />
         ))}
       </div>
+
     </section>
   )
 }
