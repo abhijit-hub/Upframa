@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
+const CAL_LINK = 'https://cal.com/up-frama-7bxgox/30min'
+
 const links = [
   { label: 'Work',     href: '#work'     },
   { label: 'Services', href: '#services' },
@@ -74,14 +76,25 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
+        {/* Schedule a Call CTA */}
         <a
-          href="#contact"
-          className="relative ml-3 font-mono text-[10px] tracking-[0.14em] uppercase text-white bg-accent px-4 md:px-[22px] py-[10px] rounded-full no-underline transition-all duration-200 hover:-translate-y-0.5"
+          href={CAL_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative ml-3 font-mono text-[10px] tracking-[0.12em] uppercase text-white bg-accent rounded-full no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(200,67,42,0.5)]
+            px-4 py-[10px] md:px-5"
           style={{ boxShadow: '0 4px 16px rgba(200,67,42,.35)' }}
         >
-          <span className="relative z-10 hidden md:inline">Let's Talk</span>
-          <span className="relative z-10 md:hidden">Talk</span>
+          {/* Calendar icon */}
+          <span className="hidden md:inline-flex items-center gap-2">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="opacity-90">
+              <rect x="1" y="2" width="10" height="9" rx="1.5" stroke="white" strokeWidth="1.2"/>
+              <path d="M1 5h10" stroke="white" strokeWidth="1.2"/>
+              <path d="M4 1v2M8 1v2" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            Schedule a Call
+          </span>
+          <span className="md:hidden">Book Call</span>
           <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/15 to-transparent pointer-events-none" />
         </a>
 
@@ -111,11 +124,18 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={CAL_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-1 font-mono text-[11px] tracking-[0.15em] uppercase text-white bg-accent text-center py-3 rounded-full no-underline"
+            className="mt-1 font-mono text-[11px] tracking-[0.12em] uppercase text-white bg-accent text-center py-3 rounded-full no-underline flex items-center justify-center gap-2"
           >
-            Let's Talk
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+              <rect x="1" y="2" width="10" height="9" rx="1.5" stroke="white" strokeWidth="1.2"/>
+              <path d="M1 5h10" stroke="white" strokeWidth="1.2"/>
+              <path d="M4 1v2M8 1v2" stroke="white" strokeWidth="1.2" strokeLinecap="round"/>
+            </svg>
+            Schedule a Call
           </a>
         </div>
       )}

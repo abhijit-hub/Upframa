@@ -5,8 +5,7 @@ import Image from 'next/image'
   ── HOW TO ADD YOUR PHOTOS ──────────────────────────────────
   1. Put your photos in the /public folder
   2. Name them:  founder-1.jpg  and  founder-2.jpg
-     (any format works: .jpg .jpeg .png .webp)
-  3. That's it — they will show up automatically here.
+  3. That's it — they show up automatically.
   ─────────────────────────────────────────────────────────────
 */
 
@@ -23,7 +22,9 @@ export default function Hero() {
         UPFRAMA
       </span>
 
-      {/* ── Founders photos — desktop only, top-right ── */}
+      {/* ── Founders photos — DESKTOP: absolute top-right | MOBILE: inline top-right corner ── */}
+
+      {/* Desktop */}
       <div
         className="hidden md:flex absolute top-1/2 right-14 -translate-y-1/2 flex-col items-end"
         style={{ animation: 'fadeUp 1.2s 0.8s both' }}
@@ -31,16 +32,13 @@ export default function Hero() {
         <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-accent/70 mb-4">
           — Founded by
         </span>
-
         <div className="relative w-[300px] h-[155px]">
-          {/* Founder 2 — behind, left */}
           <div
             className="absolute overflow-hidden bg-[#1a1a1a] rounded-[18px] border-2 border-white/10"
             style={{ width: 138, height: 138, top: 17, right: 142, transform: 'rotate(-5deg)', zIndex: 1, boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}
           >
             <Image src="/founder-2.jpg" alt="Founder" fill className="object-cover object-top" />
           </div>
-          {/* Founder 1 — front, right */}
           <div
             className="absolute overflow-hidden bg-[#1a1a1a] rounded-[18px] border-2 border-white/10"
             style={{ width: 138, height: 138, top: 0, right: 0, transform: 'rotate(4deg)', zIndex: 2, boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}
@@ -50,18 +48,47 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Main headline */}
-      <h1
-        className="font-bebas tracking-tight max-w-full md:max-w-[65%] mb-8 md:mb-10"
-        style={{ fontSize: 'clamp(52px, 10.5vw, 148px)', animation: 'fadeUp 1s 0.2s both' }}
+      {/* Mobile — fixed top-right corner */}
+      <div
+        className="md:hidden absolute top-20 right-5 flex flex-col items-end"
+        style={{ animation: 'fadeUp 1.2s 0.8s both' }}
       >
-        <span className="block font-bebas text-white" style={{ lineHeight: 0.92 }}>We Shape</span>
-        <span
-          className="block text-accent"
-          style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontWeight: 700, lineHeight: 0.92, marginTop: '0.03em', marginBottom: '0.03em' }}
-        >Futures</span>
-        <span className="block font-bebas text-white" style={{ lineHeight: 0.92 }}>Through Design</span>
-      </h1>
+        <span className="font-mono text-[8px] tracking-[0.18em] uppercase text-accent/70 mb-2">
+          — Founded by
+        </span>
+        {/* Two overlapping photos, smaller for mobile */}
+        <div className="relative w-[150px] h-[90px]">
+          <div
+            className="absolute overflow-hidden bg-[#1a1a1a] rounded-[12px] border border-white/10"
+            style={{ width: 80, height: 80, top: 10, right: 74, transform: 'rotate(-5deg)', zIndex: 1, boxShadow: '0 10px 30px rgba(0,0,0,0.6)' }}
+          >
+            <Image src="/founder-2.jpg" alt="Founder" fill className="object-cover object-top" />
+          </div>
+          <div
+            className="absolute overflow-hidden bg-[#1a1a1a] rounded-[12px] border border-white/10"
+            style={{ width: 80, height: 80, top: 0, right: 0, transform: 'rotate(4deg)', zIndex: 2, boxShadow: '0 10px 30px rgba(0,0,0,0.6)' }}
+          >
+            <Image src="/founder-1.jpg" alt="Founder" fill className="object-cover object-top" />
+          </div>
+        </div>
+      </div>
+
+      {/* Main headline */}
+      <div
+        className="max-w-full md:max-w-[70%] mb-8 md:mb-10"
+        style={{ animation: 'fadeUp 1s 0.2s both' }}
+      >
+        <h1
+          className="font-bebas text-white"
+          style={{ fontSize: 'clamp(44px, 8.8vw, 124px)', lineHeight: 0.95, margin: 0 }}
+        >
+          <span className="block">We Shape</span>
+          <span className="block text-accent" style={{ fontStyle: 'italic', letterSpacing: '0.01em' }}>
+            Futures
+          </span>
+          <span className="block">Through Design</span>
+        </h1>
+      </div>
 
       {/* Bottom row */}
       <div
@@ -79,16 +106,6 @@ export default function Hero() {
         >
           See Our Work ↗
         </a>
-      </div>
-
-      {/* Scroll indicator — desktop only */}
-      <div
-        className="hidden md:flex absolute bottom-16 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
-        style={{ animation: 'fadeUp 1s 1s both' }}
-        aria-hidden
-      >
-        <div className="scroll-line" />
-        <span className="font-mono text-[9px] tracking-[0.2em] text-accent uppercase [writing-mode:vertical-rl]">Scroll</span>
       </div>
 
       <style jsx>{`

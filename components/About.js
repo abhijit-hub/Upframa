@@ -1,65 +1,83 @@
 import RevealWrapper from './RevealWrapper'
 
 const badges = [
-  { icon: '⚡', title: 'Fast Delivery',             sub: 'Landing pages live in under a week' },
-  { icon: '🎯', title: 'Conversion-First Design',   sub: 'Every layout built to perform, not just look good' },
-  { icon: '🛠',  title: 'Real Code, No Builders',    sub: 'Next.js + Tailwind CSS — yours to own completely' },
-  { icon: '🤝', title: 'Direct Founder Access',     sub: 'You work with us, not a junior team' },
+  { icon: '⚡', title: 'Fast Delivery',           sub: 'Landing pages live in under a week' },
+  { icon: '🎯', title: 'Conversion-First Design', sub: 'Every layout built to perform, not just look good' },
+  { icon: '🛠',  title: 'Real Code, No Builders',  sub: 'Next.js + Tailwind CSS — yours to own completely' },
+  { icon: '🤝', title: 'Direct Founder Access',   sub: 'You work with us, not a junior team' },
 ]
 
 export default function About() {
   return (
-    <section className="flex flex-col md:grid md:grid-cols-2 min-h-screen">
+    <section className="bg-[#f4f1ec] text-black px-6 py-20 md:px-14 md:py-[120px]">
 
-      {/* Left — cream */}
-      <div className="relative bg-white text-black px-8 py-20 md:px-20 md:py-[120px] flex flex-col justify-center overflow-hidden">
-        <span aria-hidden className="absolute -bottom-16 -right-8 font-bebas text-[220px] text-black/[0.04] leading-none pointer-events-none select-none">UP</span>
+      {/* Top label */}
+      <RevealWrapper>
+        <span className="font-mono text-[10px] tracking-[0.22em] text-accent uppercase mb-12 block">
+          03 — Who We Are
+        </span>
+      </RevealWrapper>
 
+      {/* Two column layout — headline left, text + badges right */}
+      <div className="flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-24">
+
+        {/* Left — big headline */}
         <RevealWrapper>
-          <span className="font-mono text-[11px] tracking-[0.2em] text-accent uppercase mb-10 block">01 — Who We Are</span>
-        </RevealWrapper>
-
-        <RevealWrapper delay={0.1}>
-          <h2 className="font-playfair font-bold leading-[1.1] mb-8 text-black" style={{ fontSize: 'clamp(32px, 3.5vw, 54px)' }}>
-            Design with<br />
-            <span style={{ fontStyle: 'italic', color: '#c8432a' }}>purpose.</span><br />
-            Code with<br />precision.
+          <h2
+            className="font-bebas leading-[0.9] tracking-tight text-black"
+            style={{ fontSize: 'clamp(52px, 7vw, 100px)' }}
+          >
+            <span className="block">We Design.</span>
+            <span className="block">We Build.</span>
+            <span
+              className="block text-accent"
+              style={{
+                fontFamily: 'var(--font-playfair), Georgia, serif',
+                fontStyle: 'italic',
+                fontWeight: 700,
+                fontSize: 'clamp(58px, 7.8vw, 112px)',
+                lineHeight: 0.88,
+                marginTop: '-0.04em',
+              }}
+            >We Ship.</span>
           </h2>
+
+          {/* Accent rule */}
+          <div className="mt-10 flex items-center gap-4">
+            <div className="w-10 h-[2px] bg-accent" />
+            <span className="font-mono text-[10px] tracking-[0.18em] text-accent/70 uppercase">Est. 2026 · Mumbai</span>
+          </div>
         </RevealWrapper>
 
-        <RevealWrapper delay={0.2}>
-          <p className="text-[14px] md:text-[15px] leading-[1.9] text-[#3a3a3a] max-w-[440px] font-light">
-            We're a young studio that believes great design is only half the job.
-            The other half is building it right — fast, responsive, and ready to
-            scale from day one.
-            <br /><br />
-            Every project is a clean slate. We don't template. We think.
-          </p>
-        </RevealWrapper>
-      </div>
+        {/* Right — description + badges */}
+        <div className="flex flex-col justify-center gap-10">
+          <RevealWrapper delay={0.1}>
+            <p className="text-[15px] md:text-[16px] leading-[1.9] text-[#3a3a3a] font-light">
+              We're a young studio that believes great design is only half the job.
+              The other half is building it right — fast, responsive, and ready to
+              scale from day one. Every project is a clean slate.
+              <span className="text-black font-normal"> We don't template. We think.</span>
+            </p>
+          </RevealWrapper>
 
-      {/* Right — black */}
-      <div className="bg-black px-8 py-20 md:px-20 md:py-[120px] flex flex-col justify-center">
-
-        <RevealWrapper>
-          <p className="font-playfair italic text-[18px] md:text-[22px] leading-[1.55] text-white/45 max-w-[380px] mb-10">
-            "A new studio doesn't mean inexperienced — it means unburdened by bad habits."
-          </p>
-        </RevealWrapper>
-
-        <div className="flex flex-col gap-4">
-          {badges.map((b, i) => (
-            <RevealWrapper key={b.title} delay={i * 0.1}>
-              <div className="badge flex items-center gap-4 p-4 border border-white/7 rounded-xl bg-white/[0.03]">
-                <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-accent/15 rounded-lg text-lg">{b.icon}</div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-mono text-[11px] tracking-[0.12em] text-white uppercase">{b.title}</span>
-                  <span className="text-[12px] text-white/40 font-light">{b.sub}</span>
+          {/* Value badges */}
+          <div className="grid grid-cols-1 gap-3">
+            {badges.map((b, i) => (
+              <RevealWrapper key={b.title} delay={0.15 + i * 0.08}>
+                <div className="badge flex items-center gap-4 px-5 py-4 border border-black/10 rounded-xl bg-white/60 hover:bg-white transition-colors duration-300">
+                  <div className="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-accent/10 rounded-lg text-base">
+                    {b.icon}
+                  </div>
+                  <div>
+                    <p className="font-mono text-[10px] tracking-[0.14em] text-black uppercase mb-0.5">{b.title}</p>
+                    <p className="text-[12px] text-[#6a6a6a] font-light">{b.sub}</p>
+                  </div>
                 </div>
-              </div>
-            </RevealWrapper>
-          ))}
+              </RevealWrapper>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   )

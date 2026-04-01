@@ -1,28 +1,28 @@
-import { Bebas_Neue, Playfair_Display, DM_Mono, DM_Sans } from 'next/font/google'
+import { Bebas_Neue, DM_Mono, DM_Sans } from 'next/font/google'
 import './globals.css'
 
 const bebas = Bebas_Neue({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-bebas',
-})
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  style: ['normal', 'italic'],
+  display: 'swap',
+  fallback: ['Impact', 'Arial Narrow', 'Arial Black', 'sans-serif'],
 })
 
 const dmMono = DM_Mono({
   weight: ['300', '400'],
   subsets: ['latin'],
   variable: '--font-dmmono',
+  display: 'swap',
+  fallback: ['Courier New', 'monospace'],
 })
 
 const dmSans = DM_Sans({
   weight: ['300', '400', '500'],
   subsets: ['latin'],
   variable: '--font-dmsans',
+  display: 'swap',
+  fallback: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
 })
 
 export const metadata = {
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${playfair.variable} ${dmMono.variable} ${dmSans.variable}`}
+      className={`${bebas.variable} ${dmMono.variable} ${dmSans.variable}`}
     >
       <body className="bg-black text-white font-sans overflow-x-hidden">
         {children}

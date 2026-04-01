@@ -31,12 +31,27 @@ export default function CTA() {
         </RevealWrapper>
 
         <RevealWrapper delay={0.3}>
-          <a
-            href="mailto:hello@upframa.com"
-            className="cta-btn bg-black text-white font-mono text-xs tracking-[0.2em] uppercase no-underline px-10 md:px-14 py-4 md:py-5 inline-block"
-          >
-            <span>Get In Touch</span>
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="mailto:hello@upframa.com"
+              className="cta-btn bg-black text-white font-mono text-xs tracking-[0.2em] uppercase no-underline px-10 md:px-14 py-4 md:py-5 inline-block"
+            >
+              <span>Get In Touch</span>
+            </a>
+            <a
+              href="https://cal.com/up-frama-7bxgox/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 font-mono text-xs tracking-[0.2em] uppercase no-underline px-10 md:px-14 py-4 md:py-5 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300"
+            >
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
+                <rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3"/>
+                <path d="M1 5h10" stroke="currentColor" strokeWidth="1.3"/>
+                <path d="M4 1v2M8 1v2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+              </svg>
+              Schedule a Call
+            </a>
+          </div>
         </RevealWrapper>
       </div>
     </section>

@@ -14,7 +14,7 @@ export default function Footer() {
       <span className="font-bebas text-[30px] md:text-[34px] tracking-[0.15em] text-white">Upframa</span>
 
       <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-[#5a5a5a] md:text-center">
-        © 2024 Upframa · Built with Intention
+        © 2026 Upframa · Built with Intention
       </p>
 
       <div className="flex gap-6 md:justify-end flex-wrap">
